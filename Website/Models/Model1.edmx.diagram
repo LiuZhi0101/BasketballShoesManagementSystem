@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a365a697fcf4e1db283beab12f0b1c7" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="GoodsDBModel.Admin_Info" Width="1.5" PointX="2.375" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoodsDBModel.Goods" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoodsDBModel.Goods_Chu" Width="1.5" PointX="9.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoodsDBModel.Goods_Damage" Width="1.5" PointX="7.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoodsDBModel.Goods_Ru" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoodsDBModel.Room" Width="1.5" PointX="2.375" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="GoodsDBModel.FK__Goods__Goods_Pla__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="GoodsDBModel.FK__Goods_Chu__Chu_U__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="GoodsDBModel.FK__Goods_Dam__Damag__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="GoodsDBModel.FK__Goods_Chu__Chu_P__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="GoodsDBModel.FK__Goods_Ru__Ru_Pla__1CF15040" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

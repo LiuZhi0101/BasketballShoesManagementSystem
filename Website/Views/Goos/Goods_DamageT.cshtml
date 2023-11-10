@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Goods_DamageT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Website.Models;
+@model PagedList.IPagedList<Goods_Damage>
+@using PagedList.Mvc;
+<style>
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        margin: 25px 0px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        table caption {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+    th, td {
+        border: 1px solid #999;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    table thead tr {
+        background-color: #008c8c;
+        color: #fff;
+    }
+
+    table tbody tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tbody tr:hover {
+        background-color: #ccc;
+    }
+
+    table tbody tr td:first-child {
+        color: #f40;
+    }
+
+    table tfoot tr td {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .choice {
+        padding: 10px;
+        width: 580px;
+        margin: 0px auto 15px;
+        font-family: "Microsoft Yahei", "微软雅黑";
+        font-size: 14px;
+    }
+
+    input {
+        margin-right: 10px;
+        height: 35px;
+        width: 400px;
+        border: 1px solid #e2e2e2;
+        padding: 0 0 0 40px;
+    }
+
+    button {
+        text-align: center;
+        border: none;
+        background: black;
+        color: white;
+        height: 35px;
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 2px;
+        cursor: pointer;
+        float: right;
+    }
+
+    .wei {
+        text-align: center;
+    }
+
+    .pagination {
+        display: inline-block;
+        margin: 20px 0;
+    }
+
+        .pagination li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+            .pagination li a {
+                color: #333;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+            }
+
+            .pagination li.active a {
+                background-color: #337ab7;
+                color: #fff;
+                border-color: #337ab7;
+            }
+
+            .pagination li.disabled a {
+                color: #ccc;
+                pointer-events: none;
+                cursor: default;
+            }
+</style>
+<h1>货物报损记录表</h1>
+<form action="/Goos/Goods_DamageT" method="post" class="choice">
+    <input type="text" placeholder="请输入关键词" name="chat" />
+    <button>查询</button>
+</form>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>商品id</th>
+            <th>商品名称</th>
+            <th>商品品牌</th>
+            <th>商品规格</th>
+            <th>商品类型</th>
+            <th>商品数量</th>
+            <th>入库时间</th>
+            <th>商品存放地</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Damage_ID</td>
+                <td>@user.Damage_Uid</td>
+                <td>@user.Damage_Name</td>
+                <td>@user.Damage_Brand</td>
+                <td>@user.Damage_Spec</td>
+                <td>@user.Damage_Type</td>
+                <td>@user.Damage_Number</td>
+                <td>@user.Damage_Time</td>
+                <td>@user.Damage_Place</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<nav class="wei">
+    <ul class="pagination">
+        <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Goods_DamageT", new { page = Model.PageNumber - 1 })">上一页</a>
+        </li>
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Goods_DamageT", new { page = i })">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.PageNumber == Model.PageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("Goods_DamageT", new { page = Model.PageNumber + 1 })">下一页</a>
+        </li>
+    </ul>
+</nav>
+<script>
+    var div = document.getElementById('click_i');
+    div.setAttribute("class", "layui-this");
+</script>
+
+
+
+
+
+

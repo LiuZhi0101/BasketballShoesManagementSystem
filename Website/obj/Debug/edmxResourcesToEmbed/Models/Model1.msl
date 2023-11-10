@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GoodsDBModelStoreContainer" CdmEntityContainer="GoodsDBEntities1">
+    <EntitySetMapping Name="Admin_Info">
+      <EntityTypeMapping TypeName="GoodsDBModel.Admin_Info">
+        <MappingFragment StoreEntitySet="Admin_Info">
+          <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+          <ScalarProperty Name="Admin_Uid" ColumnName="Admin_Uid" />
+          <ScalarProperty Name="Admin_Pwd" ColumnName="Admin_Pwd" />
+          <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="GoodsDBModel.Goods">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="Goods_ID" ColumnName="Goods_ID" />
+          <ScalarProperty Name="Ru_Uid" ColumnName="Ru_Uid" />
+          <ScalarProperty Name="Goods_Name" ColumnName="Goods_Name" />
+          <ScalarProperty Name="Goods_Brand" ColumnName="Goods_Brand" />
+          <ScalarProperty Name="Goods_Spec" ColumnName="Goods_Spec" />
+          <ScalarProperty Name="Goods_Type" ColumnName="Goods_Type" />
+          <ScalarProperty Name="Goods_Number" ColumnName="Goods_Number" />
+          <ScalarProperty Name="Goods_Place" ColumnName="Goods_Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods_Chu">
+      <EntityTypeMapping TypeName="GoodsDBModel.Goods_Chu">
+        <MappingFragment StoreEntitySet="Goods_Chu">
+          <ScalarProperty Name="Chu_ID" ColumnName="Chu_ID" />
+          <ScalarProperty Name="Chu_Uid" ColumnName="Chu_Uid" />
+          <ScalarProperty Name="Chu_Name" ColumnName="Chu_Name" />
+          <ScalarProperty Name="Chu_Brand" ColumnName="Chu_Brand" />
+          <ScalarProperty Name="Chu_Spec" ColumnName="Chu_Spec" />
+          <ScalarProperty Name="Chu_Type" ColumnName="Chu_Type" />
+          <ScalarProperty Name="Chu_Number" ColumnName="Chu_Number" />
+          <ScalarProperty Name="Chu_Time" ColumnName="Chu_Time" />
+          <ScalarProperty Name="Chu_state" ColumnName="Chu_state" />
+          <ScalarProperty Name="Chu_Place" ColumnName="Chu_Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods_Damage">
+      <EntityTypeMapping TypeName="GoodsDBModel.Goods_Damage">
+        <MappingFragment StoreEntitySet="Goods_Damage">
+          <ScalarProperty Name="Damage_ID" ColumnName="Damage_ID" />
+          <ScalarProperty Name="Damage_Uid" ColumnName="Damage_Uid" />
+          <ScalarProperty Name="Damage_Name" ColumnName="Damage_Name" />
+          <ScalarProperty Name="Damage_Brand" ColumnName="Damage_Brand" />
+          <ScalarProperty Name="Damage_Spec" ColumnName="Damage_Spec" />
+          <ScalarProperty Name="Damage_Type" ColumnName="Damage_Type" />
+          <ScalarProperty Name="Damage_Number" ColumnName="Damage_Number" />
+          <ScalarProperty Name="Damage_Time" ColumnName="Damage_Time" />
+          <ScalarProperty Name="Damage_state" ColumnName="Damage_state" />
+          <ScalarProperty Name="Damage_Place" ColumnName="Damage_Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods_Ru">
+      <EntityTypeMapping TypeName="GoodsDBModel.Goods_Ru">
+        <MappingFragment StoreEntitySet="Goods_Ru">
+          <ScalarProperty Name="Ru_ID" ColumnName="Ru_ID" />
+          <ScalarProperty Name="Ru_Uid" ColumnName="Ru_Uid" />
+          <ScalarProperty Name="Ru_Name" ColumnName="Ru_Name" />
+          <ScalarProperty Name="Ru_Brand" ColumnName="Ru_Brand" />
+          <ScalarProperty Name="Ru_Spec" ColumnName="Ru_Spec" />
+          <ScalarProperty Name="Ru_Type" ColumnName="Ru_Type" />
+          <ScalarProperty Name="Ru_Number" ColumnName="Ru_Number" />
+          <ScalarProperty Name="Ru_Time" ColumnName="Ru_Time" />
+          <ScalarProperty Name="Ru_state" ColumnName="Ru_state" />
+          <ScalarProperty Name="Ru_Place" ColumnName="Ru_Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="GoodsDBModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+          <ScalarProperty Name="Room_name" ColumnName="Room_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

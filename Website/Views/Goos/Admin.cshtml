@@ -1,0 +1,129 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body onload="changeImg()">
+    <div class="container">
+        <!-- 两个单页面 字和按钮 -->
+        <div class="switch-panel">
+
+            <!-- 注册 -->
+            <div id="register" class="switch-box">
+                <!-- 此处需改变 -->
+                <div class="title">嘿！看我</div>
+                <p>今天改密码明天改密码，你什么时候才能记住密码啊！</p>
+            </div>
+        </div>
+        <div style="display:none;">@ViewBag.id</div>
+        <!-- section标签用于对页面内容分块 注册登录板块 -->
+        <section class="register-login-panel">
+
+            <!-- 登录界面 -->
+            <section class="login">
+                <!-- 此处section需改变 -->
+                <div class="content">
+                    <h2>修改密码</h2>
+                    <span>不要再忘记密码啦！</span>
+                    <input type="password" placeholder="新密码" class="input_a" id="admin">
+                    <input type="password" placeholder="再次确定密码" class="input_a" id="admin1" onkeyup="validate()"><span id="tishi" style="height:20px"></span>
+                    <div>
+                        <input type="text" class="input_a" style="width:200px;float:left;" id="vcode" placeholder="验证码" />
+                        <div id="code" title="看不清，换一张"></div>
+                    </div>
+                    <button id="button1">修改密码</button>
+                </div>
+            </section>
+        </section>
+    </div>
+    <script>
+        var id =@ViewBag.id
+         //声明一个变量用于存储生成的验证码
+        document.getElementById("code").onclick = changeImg;
+        function changeImg() {
+            var arrays = new Array(
+                '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                'u', 'v', 'w', 'x', 'y', 'z',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                'U', 'V', 'W', 'X', 'Y', 'Z'
+            );
+            code = ''; //重新初始化验证码
+            //alert(arrays.length);
+            //随机从数组中获取四个元素组成验证码
+            for (var i = 0; i < 4; i++) {
+                //随机获取一个数组的下标
+                var r = parseInt(Math.random() * arrays.length);
+                code += arrays[r];
+            }
+            document.getElementById('code').innerHTML = code; //将验证码写入指定区域
+        }
+
+        //效验验证码(表单被提交时触发)
+        $("#button1").on('click', function () {
+            //获取用户输入的验证码
+            var input_code = document.getElementById("vcode").value;
+            var pwd = document.getElementById("admin").value;
+            var pwd1 = document.getElementById("admin1").value;
+            console.log(pwd)
+            console.log(pwd1)
+            if (pwd == pwd1 && pwd != 0 && pwd1 != 0) {
+                if (input_code.toUpperCase() == code.toUpperCase()) {
+                //验证码正确(表单提交)
+                $.ajax({
+                    url: "/Goos/Admin",
+                    type: "post",
+                    data: { Pwd: pwd, ID: id },
+                    success: function (da) {
+                        console.log(da)
+                            console.log(input_code.toUpperCase())
+                            console.log(code.toUpperCase())
+                            if (da != false) {
+                                alert('修改密码成功！')
+                                window.location.href = "/Goos/Login";
+                            } else {
+                                alert('修改密码失败！')
+                            }
+                        }
+                });
+                }else {
+            alert('请输入正确的验证码!')
+        }
+            } else {
+                if (pwd == 0) {
+                    alert("新密码不能为空！");
+                } else {
+                    alert('再次确定密码不能为空！')
+                }
+            }
+        })
+        console.log(id)
+        function validate() {
+            var pwd = $('#admin').val();
+            var pwd1 = $('#admin1').val();
+            if (pwd == pwd1) {
+                $("#tishi").html("两次密码相同");
+                $("#tishi").css("color", "green");
+                $("#xiugai").removeAttr("disabled");
+            }
+            else {
+                $("#tishi").html("两次密码不相同");
+                $("#tishi").css("color", "red")
+                //$("button").attr("disabled", "disabled");
+            }
+        }
+    </script>
+</body>
+</html>
+

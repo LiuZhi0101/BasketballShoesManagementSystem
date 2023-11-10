@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "ChuAdmin";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+@using Website.Models;
+@model PagedList.IPagedList<Goods_Chu>
+@using PagedList.Mvc;
+<style>
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        margin: 25px 0px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        table caption {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 1em 0;
+        }
+
+    th, td {
+        border: 1px solid #999;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    table thead tr {
+        background-color: #008c8c;
+        color: #fff;
+    }
+
+    table tbody tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tbody tr:hover {
+        background-color: #ccc;
+    }
+
+    table tbody tr td:first-child {
+        color: #f40;
+    }
+
+    table tfoot tr td {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .choice {
+        padding: 10px;
+        width: 580px;
+        margin: 0px auto 15px;
+        font-family: "Microsoft Yahei", "微软雅黑";
+        font-size: 14px;
+    }
+
+    input {
+        margin-right: 10px;
+        height: 35px;
+        width: 400px;
+        border: 1px solid #e2e2e2;
+        padding: 0 0 0 40px;
+    }
+
+    button {
+        text-align: center;
+        border: none;
+        background: black;
+        color: white;
+        height: 35px;
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 2px;
+        cursor: pointer;
+        float: right;
+    }
+
+    .wei {
+        text-align: center;
+    }
+
+    .pagination {
+        display: inline-block;
+        margin: 20px 0;
+    }
+
+        .pagination li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+            .pagination li a {
+                color: #333;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+            }
+
+            .pagination li.active a {
+                background-color: #337ab7;
+                color: #fff;
+                border-color: #337ab7;
+            }
+
+            .pagination li.disabled a {
+                color: #ccc;
+                pointer-events: none;
+                cursor: default;
+            }
+</style>
+<h1>货物出库申请表</h1>
+<form action="/Goos/ChuAdmin" method="post" class="choice">
+    <p>输入查询需要出库的商品名称：</p><input type="text" placeholder="请输入商品id" name="chat" />
+    <button>查询</button>
+</form>
+<form class="choice" action="/Goos/ChuAdmins" method="post">
+    <p>输入需要出库的商品id：</p><input type="text" placeholder="请输入关键词" name="id" />
+    <button>同意出库</button>
+</form>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>商品id</th>
+            <th>商品名称</th>
+            <th>商品品牌</th>
+            <th>商品规格</th>
+            <th>商品类型</th>
+            <th>商品数量</th>
+            <th>申请时间</th>
+            <th>商品存放地</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Chu_ID</td>
+                <td>@user.Chu_Uid</td>
+                <td>@user.Chu_Name</td>
+                <td>@user.Chu_Brand</td>
+                <td>@user.Chu_Spec</td>
+                <td>@user.Chu_Type</td>
+                <td>@user.Chu_Number</td>
+                <td>@user.Chu_Time</td>
+                @if (user.Chu_Place == 8)
+                {
+                    <td>出库仓库</td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+<nav class="wei">
+    <ul class="pagination">
+        <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("ChuGoodsT", new { page = Model.PageNumber - 1 })">上一页</a>
+        </li>
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("ChuGoodsT", new { page = i })">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.PageNumber == Model.PageCount ? "disabled" : "")">
+            <a class="page-link" href="@Url.Action("ChuGoodsT", new { page = Model.PageNumber + 1 })">下一页</a>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    var div = document.getElementById('click_e');
+    div.setAttribute("class", "layui-this");
+</script>
+
+
+
+
+
+
+
+

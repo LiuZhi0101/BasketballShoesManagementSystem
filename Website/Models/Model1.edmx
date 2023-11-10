@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GoodsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin_Info">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin_Uid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Admin_Pwd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Admin_Phone" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="Goods_ID" />
+          </Key>
+          <Property Name="Goods_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ru_Uid" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Goods_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Goods_Brand" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Goods_Spec" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Goods_Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Goods_Number" Type="int" Nullable="false" />
+          <Property Name="Goods_Place" Type="int" />
+        </EntityType>
+        <EntityType Name="Goods_Chu">
+          <Key>
+            <PropertyRef Name="Chu_ID" />
+          </Key>
+          <Property Name="Chu_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Chu_Uid" Type="int" />
+          <Property Name="Chu_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Chu_Brand" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Chu_Spec" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Chu_Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Chu_Number" Type="int" Nullable="false" />
+          <Property Name="Chu_Time" Type="datetime" Nullable="false" />
+          <Property Name="Chu_state" Type="int" Nullable="false" />
+          <Property Name="Chu_Place" Type="int" />
+        </EntityType>
+        <EntityType Name="Goods_Damage">
+          <Key>
+            <PropertyRef Name="Damage_ID" />
+          </Key>
+          <Property Name="Damage_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Damage_Uid" Type="int" />
+          <Property Name="Damage_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Damage_Brand" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Damage_Spec" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Damage_Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Damage_Number" Type="int" Nullable="false" />
+          <Property Name="Damage_Time" Type="datetime" Nullable="false" />
+          <Property Name="Damage_state" Type="int" Nullable="false" />
+          <Property Name="Damage_Place" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods_Ru">
+          <Key>
+            <PropertyRef Name="Ru_ID" />
+          </Key>
+          <Property Name="Ru_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ru_Uid" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ru_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ru_Brand" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ru_Spec" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ru_Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ru_Number" Type="int" Nullable="false" />
+          <Property Name="Ru_Time" Type="datetime" Nullable="false" />
+          <Property Name="Ru_state" Type="int" Nullable="false" />
+          <Property Name="Ru_Place" Type="int" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Room_ID" />
+          </Key>
+          <Property Name="Room_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Room_name" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Goods__Goods_Pla__145C0A3F">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="Goods_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Chu__Chu_P__1920BF5C">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Goods_Chu" Type="Self.Goods_Chu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Goods_Chu">
+              <PropertyRef Name="Chu_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Chu__Chu_U__173876EA">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Goods_Chu" Type="Self.Goods_Chu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Goods_ID" />
+            </Principal>
+            <Dependent Role="Goods_Chu">
+              <PropertyRef Name="Chu_Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Dam__Damag__1FCDBCEB">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Goods_Damage" Type="Self.Goods_Damage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Goods_ID" />
+            </Principal>
+            <Dependent Role="Goods_Damage">
+              <PropertyRef Name="Damage_Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Ru__Ru_Pla__1CF15040">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Goods_Ru" Type="Self.Goods_Ru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Goods_Ru">
+              <PropertyRef Name="Ru_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GoodsDBModelStoreContainer">
+          <EntitySet Name="Admin_Info" EntityType="Self.Admin_Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods_Chu" EntityType="Self.Goods_Chu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods_Damage" EntityType="Self.Goods_Damage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods_Ru" EntityType="Self.Goods_Ru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Goods__Goods_Pla__145C0A3F" Association="Self.FK__Goods__Goods_Pla__145C0A3F">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Chu__Chu_P__1920BF5C" Association="Self.FK__Goods_Chu__Chu_P__1920BF5C">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Goods_Chu" EntitySet="Goods_Chu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Chu__Chu_U__173876EA" Association="Self.FK__Goods_Chu__Chu_U__173876EA">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Goods_Chu" EntitySet="Goods_Chu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Dam__Damag__1FCDBCEB" Association="Self.FK__Goods_Dam__Damag__1FCDBCEB">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Goods_Damage" EntitySet="Goods_Damage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Ru__Ru_Pla__1CF15040" Association="Self.FK__Goods_Ru__Ru_Pla__1CF15040">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Goods_Ru" EntitySet="Goods_Ru" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GoodsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin_Info">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin_Uid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="Goods_ID" />
+          </Key>
+          <Property Name="Goods_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ru_Uid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Goods_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Goods_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Goods_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Goods_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Goods_Number" Type="Int32" Nullable="false" />
+          <Property Name="Goods_Place" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Goods__Goods_Pla__145C0A3F" FromRole="Goods" ToRole="Room" />
+          <NavigationProperty Name="Goods_Chu" Relationship="Self.FK__Goods_Chu__Chu_U__173876EA" FromRole="Goods" ToRole="Goods_Chu" />
+          <NavigationProperty Name="Goods_Damage" Relationship="Self.FK__Goods_Dam__Damag__1FCDBCEB" FromRole="Goods" ToRole="Goods_Damage" />
+        </EntityType>
+        <EntityType Name="Goods_Chu">
+          <Key>
+            <PropertyRef Name="Chu_ID" />
+          </Key>
+          <Property Name="Chu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Chu_Uid" Type="Int32" />
+          <Property Name="Chu_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chu_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chu_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chu_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chu_Number" Type="Int32" Nullable="false" />
+          <Property Name="Chu_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Chu_state" Type="Int32" Nullable="false" />
+          <Property Name="Chu_Place" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods_Chu__Chu_U__173876EA" FromRole="Goods_Chu" ToRole="Goods" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Goods_Chu__Chu_P__1920BF5C" FromRole="Goods_Chu" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Goods_Damage">
+          <Key>
+            <PropertyRef Name="Damage_ID" />
+          </Key>
+          <Property Name="Damage_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Damage_Uid" Type="Int32" />
+          <Property Name="Damage_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Damage_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Damage_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Damage_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Damage_Number" Type="Int32" Nullable="false" />
+          <Property Name="Damage_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Damage_state" Type="Int32" Nullable="false" />
+          <Property Name="Damage_Place" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods_Dam__Damag__1FCDBCEB" FromRole="Goods_Damage" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="Goods_Ru">
+          <Key>
+            <PropertyRef Name="Ru_ID" />
+          </Key>
+          <Property Name="Ru_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ru_Uid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ru_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ru_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ru_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ru_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ru_Number" Type="Int32" Nullable="false" />
+          <Property Name="Ru_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ru_state" Type="Int32" Nullable="false" />
+          <Property Name="Ru_Place" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Goods_Ru__Ru_Pla__1CF15040" FromRole="Goods_Ru" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Room_ID" />
+          </Key>
+          <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Room_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__Goods_Pla__145C0A3F" FromRole="Room" ToRole="Goods" />
+          <NavigationProperty Name="Goods_Chu" Relationship="Self.FK__Goods_Chu__Chu_P__1920BF5C" FromRole="Room" ToRole="Goods_Chu" />
+          <NavigationProperty Name="Goods_Ru" Relationship="Self.FK__Goods_Ru__Ru_Pla__1CF15040" FromRole="Room" ToRole="Goods_Ru" />
+        </EntityType>
+        <Association Name="FK__Goods__Goods_Pla__145C0A3F">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="Goods_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Chu__Chu_U__173876EA">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Goods_Chu" Type="Self.Goods_Chu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Goods_ID" />
+            </Principal>
+            <Dependent Role="Goods_Chu">
+              <PropertyRef Name="Chu_Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Dam__Damag__1FCDBCEB">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Goods_Damage" Type="Self.Goods_Damage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Goods_ID" />
+            </Principal>
+            <Dependent Role="Goods_Damage">
+              <PropertyRef Name="Damage_Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Chu__Chu_P__1920BF5C">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Goods_Chu" Type="Self.Goods_Chu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Goods_Chu">
+              <PropertyRef Name="Chu_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods_Ru__Ru_Pla__1CF15040">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Goods_Ru" Type="Self.Goods_Ru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Room_ID" />
+            </Principal>
+            <Dependent Role="Goods_Ru">
+              <PropertyRef Name="Ru_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GoodsDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin_Info" EntityType="Self.Admin_Info" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="Goods_Chu" EntityType="Self.Goods_Chu" />
+          <EntitySet Name="Goods_Damage" EntityType="Self.Goods_Damage" />
+          <EntitySet Name="Goods_Ru" EntityType="Self.Goods_Ru" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <AssociationSet Name="FK__Goods__Goods_Pla__145C0A3F" Association="Self.FK__Goods__Goods_Pla__145C0A3F">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Chu__Chu_U__173876EA" Association="Self.FK__Goods_Chu__Chu_U__173876EA">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Goods_Chu" EntitySet="Goods_Chu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Dam__Damag__1FCDBCEB" Association="Self.FK__Goods_Dam__Damag__1FCDBCEB">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Goods_Damage" EntitySet="Goods_Damage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Chu__Chu_P__1920BF5C" Association="Self.FK__Goods_Chu__Chu_P__1920BF5C">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Goods_Chu" EntitySet="Goods_Chu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods_Ru__Ru_Pla__1CF15040" Association="Self.FK__Goods_Ru__Ru_Pla__1CF15040">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Goods_Ru" EntitySet="Goods_Ru" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GoodsDBModelStoreContainer" CdmEntityContainer="GoodsDBEntities1">
+          <EntitySetMapping Name="Admin_Info">
+            <EntityTypeMapping TypeName="GoodsDBModel.Admin_Info">
+              <MappingFragment StoreEntitySet="Admin_Info">
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+                <ScalarProperty Name="Admin_Uid" ColumnName="Admin_Uid" />
+                <ScalarProperty Name="Admin_Pwd" ColumnName="Admin_Pwd" />
+                <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="GoodsDBModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="Goods_ID" ColumnName="Goods_ID" />
+                <ScalarProperty Name="Ru_Uid" ColumnName="Ru_Uid" />
+                <ScalarProperty Name="Goods_Name" ColumnName="Goods_Name" />
+                <ScalarProperty Name="Goods_Brand" ColumnName="Goods_Brand" />
+                <ScalarProperty Name="Goods_Spec" ColumnName="Goods_Spec" />
+                <ScalarProperty Name="Goods_Type" ColumnName="Goods_Type" />
+                <ScalarProperty Name="Goods_Number" ColumnName="Goods_Number" />
+                <ScalarProperty Name="Goods_Place" ColumnName="Goods_Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods_Chu">
+            <EntityTypeMapping TypeName="GoodsDBModel.Goods_Chu">
+              <MappingFragment StoreEntitySet="Goods_Chu">
+                <ScalarProperty Name="Chu_ID" ColumnName="Chu_ID" />
+                <ScalarProperty Name="Chu_Uid" ColumnName="Chu_Uid" />
+                <ScalarProperty Name="Chu_Name" ColumnName="Chu_Name" />
+                <ScalarProperty Name="Chu_Brand" ColumnName="Chu_Brand" />
+                <ScalarProperty Name="Chu_Spec" ColumnName="Chu_Spec" />
+                <ScalarProperty Name="Chu_Type" ColumnName="Chu_Type" />
+                <ScalarProperty Name="Chu_Number" ColumnName="Chu_Number" />
+                <ScalarProperty Name="Chu_Time" ColumnName="Chu_Time" />
+                <ScalarProperty Name="Chu_state" ColumnName="Chu_state" />
+                <ScalarProperty Name="Chu_Place" ColumnName="Chu_Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods_Damage">
+            <EntityTypeMapping TypeName="GoodsDBModel.Goods_Damage">
+              <MappingFragment StoreEntitySet="Goods_Damage">
+                <ScalarProperty Name="Damage_ID" ColumnName="Damage_ID" />
+                <ScalarProperty Name="Damage_Uid" ColumnName="Damage_Uid" />
+                <ScalarProperty Name="Damage_Name" ColumnName="Damage_Name" />
+                <ScalarProperty Name="Damage_Brand" ColumnName="Damage_Brand" />
+                <ScalarProperty Name="Damage_Spec" ColumnName="Damage_Spec" />
+                <ScalarProperty Name="Damage_Type" ColumnName="Damage_Type" />
+                <ScalarProperty Name="Damage_Number" ColumnName="Damage_Number" />
+                <ScalarProperty Name="Damage_Time" ColumnName="Damage_Time" />
+                <ScalarProperty Name="Damage_state" ColumnName="Damage_state" />
+                <ScalarProperty Name="Damage_Place" ColumnName="Damage_Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods_Ru">
+            <EntityTypeMapping TypeName="GoodsDBModel.Goods_Ru">
+              <MappingFragment StoreEntitySet="Goods_Ru">
+                <ScalarProperty Name="Ru_ID" ColumnName="Ru_ID" />
+                <ScalarProperty Name="Ru_Uid" ColumnName="Ru_Uid" />
+                <ScalarProperty Name="Ru_Name" ColumnName="Ru_Name" />
+                <ScalarProperty Name="Ru_Brand" ColumnName="Ru_Brand" />
+                <ScalarProperty Name="Ru_Spec" ColumnName="Ru_Spec" />
+                <ScalarProperty Name="Ru_Type" ColumnName="Ru_Type" />
+                <ScalarProperty Name="Ru_Number" ColumnName="Ru_Number" />
+                <ScalarProperty Name="Ru_Time" ColumnName="Ru_Time" />
+                <ScalarProperty Name="Ru_state" ColumnName="Ru_state" />
+                <ScalarProperty Name="Ru_Place" ColumnName="Ru_Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="GoodsDBModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
+                <ScalarProperty Name="Room_name" ColumnName="Room_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

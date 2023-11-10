@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GoodsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin_Info">
+    <Key>
+      <PropertyRef Name="Admin_ID" />
+    </Key>
+    <Property Name="Admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Admin_Uid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Admin_Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Admin_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="Goods_ID" />
+    </Key>
+    <Property Name="Goods_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ru_Uid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Goods_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Goods_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Goods_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Goods_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Goods_Number" Type="Int32" Nullable="false" />
+    <Property Name="Goods_Place" Type="Int32" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Goods__Goods_Pla__145C0A3F" FromRole="Goods" ToRole="Room" />
+    <NavigationProperty Name="Goods_Chu" Relationship="Self.FK__Goods_Chu__Chu_U__173876EA" FromRole="Goods" ToRole="Goods_Chu" />
+    <NavigationProperty Name="Goods_Damage" Relationship="Self.FK__Goods_Dam__Damag__1FCDBCEB" FromRole="Goods" ToRole="Goods_Damage" />
+  </EntityType>
+  <EntityType Name="Goods_Chu">
+    <Key>
+      <PropertyRef Name="Chu_ID" />
+    </Key>
+    <Property Name="Chu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Chu_Uid" Type="Int32" />
+    <Property Name="Chu_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Chu_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Chu_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Chu_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Chu_Number" Type="Int32" Nullable="false" />
+    <Property Name="Chu_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Chu_state" Type="Int32" Nullable="false" />
+    <Property Name="Chu_Place" Type="Int32" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__Goods_Chu__Chu_U__173876EA" FromRole="Goods_Chu" ToRole="Goods" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Goods_Chu__Chu_P__1920BF5C" FromRole="Goods_Chu" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Goods_Damage">
+    <Key>
+      <PropertyRef Name="Damage_ID" />
+    </Key>
+    <Property Name="Damage_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Damage_Uid" Type="Int32" />
+    <Property Name="Damage_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Damage_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Damage_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Damage_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Damage_Number" Type="Int32" Nullable="false" />
+    <Property Name="Damage_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Damage_state" Type="Int32" Nullable="false" />
+    <Property Name="Damage_Place" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__Goods_Dam__Damag__1FCDBCEB" FromRole="Goods_Damage" ToRole="Goods" />
+  </EntityType>
+  <EntityType Name="Goods_Ru">
+    <Key>
+      <PropertyRef Name="Ru_ID" />
+    </Key>
+    <Property Name="Ru_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ru_Uid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ru_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ru_Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ru_Spec" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ru_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ru_Number" Type="Int32" Nullable="false" />
+    <Property Name="Ru_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Ru_state" Type="Int32" Nullable="false" />
+    <Property Name="Ru_Place" Type="Int32" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Goods_Ru__Ru_Pla__1CF15040" FromRole="Goods_Ru" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="Room_ID" />
+    </Key>
+    <Property Name="Room_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Room_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__Goods_Pla__145C0A3F" FromRole="Room" ToRole="Goods" />
+    <NavigationProperty Name="Goods_Chu" Relationship="Self.FK__Goods_Chu__Chu_P__1920BF5C" FromRole="Room" ToRole="Goods_Chu" />
+    <NavigationProperty Name="Goods_Ru" Relationship="Self.FK__Goods_Ru__Ru_Pla__1CF15040" FromRole="Room" ToRole="Goods_Ru" />
+  </EntityType>
+  <Association Name="FK__Goods__Goods_Pla__145C0A3F">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="Goods_Place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods_Chu__Chu_U__173876EA">
+    <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+    <End Role="Goods_Chu" Type="Self.Goods_Chu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Goods_ID" />
+      </Principal>
+      <Dependent Role="Goods_Chu">
+        <PropertyRef Name="Chu_Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods_Dam__Damag__1FCDBCEB">
+    <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+    <End Role="Goods_Damage" Type="Self.Goods_Damage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Goods_ID" />
+      </Principal>
+      <Dependent Role="Goods_Damage">
+        <PropertyRef Name="Damage_Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods_Chu__Chu_P__1920BF5C">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="Goods_Chu" Type="Self.Goods_Chu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="Goods_Chu">
+        <PropertyRef Name="Chu_Place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods_Ru__Ru_Pla__1CF15040">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="Goods_Ru" Type="Self.Goods_Ru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="Room_ID" />
+      </Principal>
+      <Dependent Role="Goods_Ru">
+        <PropertyRef Name="Ru_Place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GoodsDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin_Info" EntityType="Self.Admin_Info" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" />
+    <EntitySet Name="Goods_Chu" EntityType="Self.Goods_Chu" />
+    <EntitySet Name="Goods_Damage" EntityType="Self.Goods_Damage" />
+    <EntitySet Name="Goods_Ru" EntityType="Self.Goods_Ru" />
+    <EntitySet Name="Room" EntityType="Self.Room" />
+    <AssociationSet Name="FK__Goods__Goods_Pla__145C0A3F" Association="Self.FK__Goods__Goods_Pla__145C0A3F">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods_Chu__Chu_U__173876EA" Association="Self.FK__Goods_Chu__Chu_U__173876EA">
+      <End Role="Goods" EntitySet="Goods" />
+      <End Role="Goods_Chu" EntitySet="Goods_Chu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods_Dam__Damag__1FCDBCEB" Association="Self.FK__Goods_Dam__Damag__1FCDBCEB">
+      <End Role="Goods" EntitySet="Goods" />
+      <End Role="Goods_Damage" EntitySet="Goods_Damage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods_Chu__Chu_P__1920BF5C" Association="Self.FK__Goods_Chu__Chu_P__1920BF5C">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Goods_Chu" EntitySet="Goods_Chu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods_Ru__Ru_Pla__1CF15040" Association="Self.FK__Goods_Ru__Ru_Pla__1CF15040">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Goods_Ru" EntitySet="Goods_Ru" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

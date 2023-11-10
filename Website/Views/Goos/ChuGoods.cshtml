@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "ChuGoods";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h1 {
+        font-size: 50px;
+    }
+
+    .body {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    input {
+        margin: 15px 0px;
+        height: 35px;
+        width: 400px;
+        border: 1px solid #e2e2e2;
+        padding: 0 0 0 40px;
+    }
+
+    #select1 {
+        margin: 15px 0px;
+        height: 35px;
+        width: 442px;
+        border: 1px solid #e2e2e2;
+        padding: 0 0 0 40px;
+    }
+
+    button {
+        text-align: center;
+        border: none;
+        background: black;
+        color: white;
+        height: 35px;
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<div class="body">
+    <h1>货物出库登记</h1>
+    <form action="/Goos/ChuGoods" method="post" class="choice">
+        <input type="text" placeholder="请输入商品id" name="Chu_Uid" /><br />    
+        <input type="text" placeholder="请输入商品数量" name="Chu_Number" /><br />
+        <select name="Chu_Place" id="select1">
+            <option value="">请输入出货仓库</option>
+            <option value="8">出货仓库</option>
+        </select><br />
+        <button>出库</button>
+    </form>
+</div>
+<script>
+    var div = document.getElementById('click_f');
+    div.setAttribute("class", "layui-this");
+</script>
+
+
+
+

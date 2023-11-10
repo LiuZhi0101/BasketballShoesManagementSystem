@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "RuGoods";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h1{
+        font-size:50px;
+    }
+    .body {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    input {
+        margin: 15px 0px;
+        height: 35px;
+        width: 400px;
+        border: 1px solid #e2e2e2;
+        padding: 0 0 0 40px;
+    }
+
+    #select1 {
+        margin: 15px 0px;
+        height: 35px;
+        width: 442px;
+        border: 1px solid #e2e2e2;
+        padding: 0 0 0 40px;
+    }
+
+    button {
+        text-align: center;
+        border: none;
+        background: black;
+        color: white;
+        height: 35px;
+        width: 100px;
+        padding: 5px 10px;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+</style>
+<div class="body">
+    <h1>货物入库登记</h1>
+    <form action="/Goos/RuGoods" method="post" class="choice">
+        <input type="text" placeholder="请输入商品id" name="Ru_Uid" /><br />
+        <input type="text" placeholder="请输入商品名称" name="Goods_Name" /><br />
+        <input type="text" placeholder="请输入商品品牌" name="Goods_Brand" /><br />
+        <input type="text" placeholder="请输入商品类型" name="Goods_Type" /><br />
+        <input type="text" placeholder="请输入商品规格" name="Goods_Spec" /><br />
+        <input type="text" placeholder="请输入商品数量" name="Goods_Number" /><br />
+        <select name="Goods_Place" id="select1">
+            <option value="">请输入存放仓库</option>
+            <option value="1">1号仓库</option>
+            <option value="2">2号仓库</option>
+            <option value="3">3号仓库</option>
+            <option value="4">4号仓库</option>
+            <option value="5">5号仓库</option>
+            <option value="6">6号仓库</option>
+            <option value="7">7号仓库</option>
+        </select><br />
+        <button>添加</button>
+    </form>
+</div>
+<script>
+    var div = document.getElementById('click_d');
+    div.setAttribute("class", "layui-this");
+</script>
+
+
+
+
